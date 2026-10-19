@@ -20,21 +20,32 @@ no dependencies to keep updated.
 ├── 404.html              Not found
 ├── css/style.css         All styling. Brand colours are CSS variables at the top.
 ├── js/main.js            Nav, scroll reveal, form submit  ← paste your form URL here
-├── assets/                Favicons, social share image (logo is inline SVG in every page)
+├── assets/                Logo (SVG + PNG), favicons, social share image
 ├── apps-script/           Contact-form backend + setup guide
 ├── sitemap.xml            Submit this to Google Search Console
 ├── robots.txt
 └── vercel.json            Clean URLs, redirects, cache and security headers
 ```
 
-The logo is not a raster file — it's inline SVG inside the header and footer of every
-page: a graphite chamfered tile with a hand-plotted teal spiral (a true Archimedean
-spiral, computed point-by-point, not a stock icon), paired with real HTML text
-("Vortex / Construction Solutions") so it's crisp at any size and the company name
-stays selectable and indexable. If you ever want to change it, search every `.html`
-file for `brand-mark` and edit the one `<svg>` block — then copy that same block into
-the other pages (there's no templating engine, so each page is a real, self-contained
-file).
+The logo is the client-supplied Vortex artwork, used exactly as provided:
+
+- `assets/vortex-logo-original.svg` — the untouched source file
+- `assets/vortex-logo.svg` — a tightly-cropped vector copy (no background square), used
+  in the header of every page as a single `<img class="brand-logo">`
+- `assets/vortex-logo-light.svg` — the same artwork with the navy parts turned white,
+  used in the dark footer, where the navy wordmark would otherwise disappear
+- `assets/favicon.svg` — just the X mark (no wordmark), for the browser tab
+- `assets/vortex-logo.png` — a 3000px raster render, used for the letterhead
+
+The site colours in `css/style.css` are sampled from the logo: navy `#1D3255` and teal
+`#3BB0A2`. That exact teal is used on dark backgrounds and in graphics; on light
+backgrounds the site uses a deeper shade of it (`#1F8073`) so teal text and white text
+on teal buttons stay readable.
+
+To swap in a different logo revision later, replace those SVGs, then re-render the
+PNGs (favicons, `apple-touch-icon.png`, `favicon.ico`, `og-image.png`,
+`vortex-logo.png`) — e.g. with the `sharp` npm package — and regenerate the letterhead
+in the separate `Vortex Construction Solutions - Letterhead` folder (see its own README).
 
 ---
 
